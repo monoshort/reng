@@ -1,0 +1,284 @@
+.page {
+  padding: 2rem 0 4rem;
+}
+
+.layout {
+  max-width: 1080px;
+}
+
+.intro {
+  margin-bottom: 2rem;
+  max-width: 40rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.inlineLink {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.inlineLink:hover {
+  color: var(--accent-hover);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr min(380px, 100%);
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 880px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  padding: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.option {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.optionWithThumb {
+  grid-template-columns: auto 1fr auto;
+}
+
+.option:has(.radio:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.option:hover {
+  border-color: #ccc;
+}
+
+.optionActive {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.radio {
+  align-self: start;
+  margin-top: 0.35rem;
+  accent-color: var(--ink);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.optionText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.optionTitle {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.optionDesc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.optionThumb {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  flex-shrink: 0;
+  background: #ebe8e3;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.toggleRow input {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--ink);
+}
+
+.summary {
+  position: sticky;
+  top: 5.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.preview {
+  margin: 0 0 1.25rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ebe8e3;
+  border: 1px solid var(--line);
+}
+
+.previewImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.previewOiled .previewImg {
+  filter: sepia(0.12) saturate(1.22) brightness(0.97);
+}
+
+.previewCaption {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  line-height: 1.35;
+}
+
+.summaryTitle {
+  margin: 0 0 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.specs {
+  margin: 0 0 1.25rem;
+}
+
+.specs > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.specs > div:first-child {
+  padding-top: 0;
+}
+
+.specs dt {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.specs dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 600;
+}
+
+.priceBox {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.priceLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.price {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.disclaimer {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.btnShop {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.85rem;
+  border-radius: 999px;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.btnShop:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
