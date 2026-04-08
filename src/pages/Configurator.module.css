@@ -56,8 +56,10 @@
 
 .fieldset {
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
 }
 
 .legend {
@@ -86,7 +88,7 @@
   border: 2px solid var(--line);
   background: var(--surface);
   cursor: pointer;
-  min-height: 52px;
+  min-height: 50px;
   transition:
     border-color var(--motion-snappy) var(--easing-standard),
     box-shadow var(--motion-snappy) var(--easing-standard),
@@ -124,7 +126,7 @@
 .optionText {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
   min-width: 0;
 }
 
@@ -184,6 +186,10 @@
   transition:
     box-shadow var(--motion-smooth) var(--easing-standard),
     border-color var(--motion-smooth) var(--easing-standard);
+}
+
+.mobilePriceBar {
+  display: none;
 }
 
 .preview {
@@ -330,6 +336,10 @@
 }
 
 @media (max-width: 620px) {
+  .page {
+    padding-bottom: 6.25rem;
+  }
+
   .title {
     font-size: clamp(1.6rem, 7vw, 2rem);
   }
@@ -339,23 +349,25 @@
   }
 
   .form {
-    gap: 1.3rem;
+    gap: 1.05rem;
   }
 
   .legend {
     margin-bottom: 0.55rem;
+    font-size: 0.72rem;
   }
 
   .options {
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.45rem;
   }
 
   .option {
     width: 100%;
     min-width: 0;
-    padding: 0.85rem 0.85rem;
+    padding: 0.7rem 0.78rem;
     transform: none;
+    min-height: 44px;
   }
 
   .option:hover {
@@ -367,25 +379,27 @@
   }
 
   .optionTitle {
-    font-size: 0.97rem;
+    font-size: 0.95rem;
   }
 
   .optionDesc {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 
   .optionThumb {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
   }
 
   .optionThumbWrap {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
   }
 
   .summary {
     margin-top: 0.2rem;
+    padding: 0.95rem;
+    border-radius: 10px;
   }
 
   .specs > div {
@@ -399,7 +413,91 @@
   }
 
   .price {
-    font-size: 1.65rem;
+    font-size: 1.45rem;
+  }
+
+  .mobilePriceBar {
+    position: sticky;
+    bottom: 0.6rem;
+    z-index: 30;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-soft);
+    border-radius: 14px;
+    padding: 0.65rem 0.75rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .mobilePriceMeta {
+    min-width: 0;
+  }
+
+  .mobilePriceLabel {
+    display: block;
+    margin-bottom: 0.1rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .mobilePriceValue {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .mobilePriceActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+  }
+
+  .mobileDetailsBtn,
+  .mobileShopBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0.45rem 0.65rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.84rem;
+    transition:
+      background var(--motion-smooth) var(--easing-standard),
+      border-color var(--motion-snappy) var(--easing-standard),
+      transform var(--motion-snappy) var(--easing-standard);
+  }
+
+  .mobileDetailsBtn {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+  }
+
+  .mobileShopBtn {
+    background: var(--ink);
+    color: #fff;
+    border: 1px solid var(--ink);
+  }
+
+  .mobileDetailsBtn:hover {
+    border-color: #cbc6bd;
+    background: #fff;
+    transform: translateY(-1px);
+  }
+
+  .mobileShopBtn:hover {
+    background: #333;
+    transform: translateY(-1px);
   }
 }
 

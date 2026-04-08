@@ -93,6 +93,14 @@ export function Configurator() {
 
   const price = useMemo(() => calculateFoldawayPrice(config), [config]);
   const mainImageUrl = getFoldawayPreviewUrl(config);
+  const formattedPrice = useMemo(
+    () =>
+      price.toLocaleString("nl-NL", {
+        style: "currency",
+        currency: "EUR",
+      }),
+    [price]
+  );
 
   const previewAlt = `Foldaway opvouwbare trap — ${woodInfo[wood].label}`;
 
@@ -272,7 +280,11 @@ export function Configurator() {
             </fieldset>
           </div>
 
-          <aside className={styles.summary} aria-live="polite">
+          <aside
+            id="configurator-summary"
+            className={styles.summary}
+            aria-live="polite"
+          >
             <figure className={styles.preview}>
               <SmoothImage
                 key={mainImageUrl}
@@ -316,12 +328,7 @@ export function Configurator() {
             </dl>
             <div className={styles.priceBox}>
               <span className={styles.priceLabel}>Indicatieve prijs</span>
-              <p className={styles.price}>
-                {price.toLocaleString("nl-NL", {
-                  style: "currency",
-                  currency: "EUR",
-                })}
-              </p>
+              <p className={styles.price}>{formattedPrice}</p>
               <p className={styles.disclaimer}>
                 Incl. btw. Levertijd o.a. 4–6 werkweken (volgens shop). Demo —
                 geen bestelling.
@@ -336,6 +343,25 @@ export function Configurator() {
               Bekijk op prijzentrappen.nl
             </a>
           </aside>
+        </div>
+        <div className={styles.mobilePriceBar} aria-live="polite">
+          <div className={styles.mobilePriceMeta}>
+            <span className={styles.mobilePriceLabel}>Indicatieve prijs</span>
+            <strong className={styles.mobilePriceValue}>{formattedPrice}</strong>
+          </div>
+          <div className={styles.mobilePriceActions}>
+            <a href="#configurator-summary" className={styles.mobileDetailsBtn}>
+              Details
+            </a>
+            <a
+              href={foldawayProductUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.mobileShopBtn}
+            >
+              Bekijk shop
+            </a>
+          </div>
         </div>
       </div>
     </div>
