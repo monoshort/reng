@@ -17,6 +17,7 @@ import {
   type AntislipId,
   type FoldawayConfig,
 } from "../data/foldaway";
+import { SmoothImage } from "../components/SmoothImage";
 import styles from "./Configurator.module.css";
 
 const woods: WoodFinishId[] = [
@@ -145,10 +146,11 @@ export function Configurator() {
                         </span>
                       )}
                     </div>
-                    <img
+                    <SmoothImage
                       src={getFoldawayThumbUrl(w)}
                       alt=""
                       className={styles.optionThumb}
+                      wrapperClassName={styles.optionThumbWrap}
                       loading="lazy"
                       referrerPolicy="no-referrer"
                     />
@@ -272,11 +274,12 @@ export function Configurator() {
 
           <aside className={styles.summary} aria-live="polite">
             <figure className={styles.preview}>
-              <img
+              <SmoothImage
                 key={mainImageUrl}
                 src={mainImageUrl}
                 alt={previewAlt}
                 className={styles.previewImg}
+                wrapperClassName={styles.previewImgWrap}
                 loading="eager"
                 decoding="async"
                 referrerPolicy="no-referrer"

@@ -87,7 +87,10 @@
   background: var(--surface);
   cursor: pointer;
   min-height: 52px;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  transition:
+    border-color var(--motion-snappy) var(--easing-standard),
+    box-shadow var(--motion-snappy) var(--easing-standard),
+    transform var(--motion-snappy) var(--easing-standard);
 }
 
 .optionWithThumb {
@@ -146,6 +149,12 @@
   background: #ebe8e3;
 }
 
+.optionThumbWrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+}
+
 .toggleRow {
   display: flex;
   align-items: center;
@@ -172,7 +181,9 @@
   border-radius: var(--radius);
   padding: 1.5rem;
   box-shadow: var(--shadow);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    box-shadow var(--motion-smooth) var(--easing-standard),
+    border-color var(--motion-smooth) var(--easing-standard);
 }
 
 .preview {
@@ -190,6 +201,11 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   animation: fadeIn 0.35s ease;
+}
+
+.previewImgWrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
 }
 
 .previewOiled .previewImg {
@@ -283,7 +299,9 @@
   min-height: 46px;
   padding: 0.85rem;
   border-radius: 999px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background var(--motion-smooth) var(--easing-standard),
+    transform var(--motion-snappy) var(--easing-standard);
 }
 
 .btnShop:hover {
@@ -361,6 +379,11 @@
   }
 
   .optionThumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .optionThumbWrap {
     width: 60px;
     height: 60px;
   }

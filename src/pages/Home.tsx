@@ -5,6 +5,7 @@ import {
   calculateFoldawayPrice,
   type FoldawayConfig,
 } from "../data/foldaway";
+import { SmoothImage } from "../components/SmoothImage";
 import styles from "./Home.module.css";
 
 const demoConfig: FoldawayConfig = {
@@ -86,9 +87,10 @@ export function Home() {
           </div>
           <div className={styles.heroArt}>
             <figure className={styles.heroPhoto}>
-              <img
+              <SmoothImage
                 src={foldawayImages.hero}
                 alt="Foldaway trap uitgeklapt in woonkamer naar verdieping"
+                wrapperClassName={styles.heroImgWrap}
                 className={styles.heroImg}
                 width={720}
                 height={900}
@@ -140,9 +142,10 @@ export function Home() {
           <div className={styles.galleryGrid}>
             {gallery.map(({ src, alt }) => (
               <figure key={src} className={styles.galleryItem}>
-                <img
+                <SmoothImage
                   src={src}
                   alt={alt}
+                  wrapperClassName={styles.galleryImgWrap}
                   className={styles.galleryImg}
                   loading="lazy"
                   referrerPolicy="no-referrer"

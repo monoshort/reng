@@ -54,7 +54,10 @@
   gap: 4px;
   padding: 0;
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color var(--motion-smooth) var(--easing-standard),
+    background var(--motion-smooth) var(--easing-standard),
+    transform var(--motion-snappy) var(--easing-standard);
 }
 
 .menuToggle:hover {
@@ -78,7 +81,9 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  transition: max-height 0.25s ease, opacity 0.2s ease;
+  transition:
+    max-height var(--motion-emphasis) var(--easing-entrance),
+    opacity var(--motion-smooth) var(--easing-standard);
 }
 
 .navLink {
@@ -88,7 +93,9 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  transition: color 0.15s ease;
+  transition:
+    color var(--motion-snappy) var(--easing-standard),
+    background var(--motion-snappy) var(--easing-standard);
 }
 
 .navLink:hover,
@@ -107,7 +114,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background var(--motion-smooth) var(--easing-standard),
+    transform var(--motion-snappy) var(--easing-standard);
   white-space: nowrap;
 }
 
