@@ -1,5 +1,5 @@
 .hero {
-  padding: 2.5rem 0 3.5rem;
+  padding: 2.7rem 0 3.8rem;
 }
 
 .heroGrid {
@@ -40,6 +40,7 @@
   margin: 0 0 1.5rem;
   font-size: 1.05rem;
   color: var(--muted);
+  line-height: 1.65;
 }
 
 .heroLink {
@@ -56,7 +57,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .priceHint {
@@ -74,9 +75,14 @@
   background: var(--ink);
   color: #fff;
   font-weight: 600;
-  padding: 0.75rem 1.35rem;
+  min-height: 46px;
+  padding: 0.78rem 1.35rem;
   border-radius: 999px;
-  transition: background 0.15s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-soft);
 }
 
 .btnPrimary:hover {
@@ -88,13 +94,18 @@
   border: 1px solid var(--line);
   background: var(--surface);
   font-weight: 600;
-  padding: 0.75rem 1.35rem;
+  min-height: 46px;
+  padding: 0.78rem 1.35rem;
   border-radius: 999px;
-  transition: border-color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .btnGhost:hover {
   border-color: var(--ink);
+  transform: translateY(-1px);
 }
 
 .trust {
@@ -122,6 +133,7 @@
   box-shadow: var(--shadow);
   overflow: hidden;
   background: #ebe8e3;
+  transform: translateZ(0);
 }
 
 .heroImg {
@@ -216,6 +228,13 @@
   border: 1px solid var(--line);
   background: var(--bg);
   aspect-ratio: 3 / 4;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.galleryItem:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: #dbd4c9;
 }
 
 .galleryImg {
@@ -227,4 +246,45 @@
 
 .ctaRow {
   text-align: center;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 1.6rem 0 2.4rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(1.72rem, 8vw, 2.25rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .heroLead {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .heroActions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .btnPrimary,
+  .btnGhost {
+    width: 100%;
+  }
+
+  .trust {
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.89rem;
+  }
+
+  .about {
+    padding: 1.4rem 0 2.1rem;
+  }
+
+  .gallery {
+    padding: 1.5rem 0 2.7rem;
+  }
 }

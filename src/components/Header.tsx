@@ -1,4 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const nav = [
@@ -8,6 +9,24 @@ const nav = [
 ];
 
 export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname, location.search, location.hash]);
+
+  useEffect(() => {
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onEscape);
+    return () => window.removeEventListener("keydown", onEscape);
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
@@ -15,16 +34,38 @@ export function Header() {
           <span className={styles.logoMark} aria-hidden />
           Foldaway
         </Link>
-        <nav className={styles.nav} aria-label="Hoofdmenu">
+        <button
+          type="button"
+          className={styles.menuToggle}
+          aria-expanded={menuOpen}
+          aria-controls="main-navigation"
+          aria-label={menuOpen ? "Sluit menu" : "Open menu"}
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav
+          id="main-navigation"
+          className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}
+          aria-label="Hoofdmenu"
+        >
           {nav.map(({ to, label }) =>
             to.startsWith("/#") ? (
-              <a key={to} href={to} className={styles.navLink}>
+              <a
+                key={to}
+                href={to}
+                className={styles.navLink}
+                onClick={() => setMenuOpen(false)}
+              >
                 {label}
               </a>
             ) : (
               <NavLink
                 key={to}
                 to={to}
+                onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
                   `${styles.navLink} ${isActive ? styles.active : ""}`
                 }

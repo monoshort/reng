@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem 0;
-  flex-wrap: wrap;
+  padding: 0.75rem 0;
+  min-height: 4.25rem;
 }
 
 .logo {
@@ -42,17 +42,53 @@
   transform: skewY(-12deg);
 }
 
+.menuToggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.menuToggle:hover {
+  border-color: #cfcac1;
+  background: #fff;
+}
+
+.menuToggle:active {
+  transform: scale(0.97);
+}
+
+.menuToggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--ink);
+}
+
 .nav {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
 }
 
 .navLink {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--muted);
-  transition: color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
 }
 
 .navLink:hover,
@@ -65,9 +101,13 @@
   color: #fff;
   font-weight: 600;
   font-size: 0.9rem;
-  padding: 0.55rem 1.1rem;
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
   border-radius: 999px;
-  transition: background 0.15s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
 }
 
@@ -77,19 +117,70 @@
 }
 
 @media (max-width: 720px) {
+  .inner {
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-items: center;
+    padding: 0.6rem 0;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+    margin-left: auto;
+  }
+
   .nav {
-    order: 3;
+    order: 4;
     width: 100%;
-    justify-content: center;
-    padding-top: 0.25rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+    padding-top: 0.55rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
     border-top: 1px solid var(--line);
   }
 
-  .inner {
-    justify-content: center;
+  .navLink {
+    border-radius: 10px;
+    min-height: 46px;
+    padding: 0 0.75rem;
+  }
+
+  .navLink:hover,
+  .active {
+    background: #f0ede7;
   }
 
   .cta {
-    margin-left: auto;
+    order: 3;
+    min-height: 42px;
+    padding: 0.55rem 1rem;
+    font-size: 0.86rem;
+  }
+
+  .navOpen {
+    max-height: 260px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 440px) {
+  .inner {
+    gap: 0.5rem;
+  }
+
+  .cta {
+    width: 100%;
+    order: 4;
+  }
+
+  .nav {
+    order: 5;
+  }
+
+  .navOpen {
+    max-height: 320px;
   }
 }
